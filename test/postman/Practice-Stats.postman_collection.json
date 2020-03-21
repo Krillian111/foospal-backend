@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "c954c6da-76b0-43b1-a86c-064012621ecd",
+		"name": "Practice-Stats",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all singles",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{apiRoot}}/singles",
+					"host": [
+						"{{apiRoot}}"
+					],
+					"path": [
+						"singles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create single",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6bd899f7-b017-47c0-8ee9-e77ee3d62603",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"blogPostId\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"playerA\": \"Anton\",\n    \"playerB\": \"Berta\",\n    \"scoreA\": \"5\",\n    \"scoreB\": \"3\",\n    \"playedOn\": \"2020-03-21T20:00:00.000Z\"\n}"
+				},
+				"url": {
+					"raw": "{{apiRoot}}/singles",
+					"host": [
+						"{{apiRoot}}"
+					],
+					"path": [
+						"singles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update single",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"playerA\": \"Anton\",\n    \"playerB\": \"Berta\",\n    \"scoreA\": \"5\",\n    \"scoreB\": \"3\",\n    \"playedOn\": \"2020-03-20T20:00:00.000Z\"\n}"
+				},
+				"url": {
+					"raw": "{{apiRoot}}/singles/5e7670c6e8aa8100825cb209",
+					"host": [
+						"{{apiRoot}}"
+					],
+					"path": [
+						"singles",
+						"5e7670c6e8aa8100825cb209"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete single",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{apiRoot}}/singles/5e76707645e7820057e17030",
+					"host": [
+						"{{apiRoot}}"
+					],
+					"path": [
+						"singles",
+						"5e76707645e7820057e17030"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

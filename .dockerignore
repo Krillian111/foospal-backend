@@ -1,0 +1,7 @@
+# IDE stuff
+.history
+*.code-workspace
+
+node_modules
+npm-debug.log
+
