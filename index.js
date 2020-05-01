@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const connectToDatabase = require('./database/database');
 const singlesRoutes = require('./api/matches/singles.routes');
+const loginRoutes = require('./login/auth.routes');
 
 const app = express();
 
@@ -13,9 +14,13 @@ app.use(bodyParser.urlencoded({
 
 connectToDatabase();
 
-const router = express.Router();
-app.use('/api', router);
-singlesRoutes(router);
+const apiRouter = express.Router();
+app.use('/api', apiRouter);
+singlesRoutes(apiRouter);
+
+const authRouter = express.Router();
+app.use('/login', authRouter);
+loginRoutes(authRouter);
 
 app.listen(config.PORT, () => {
   console.log(`Listening on port: ${config.PORT}`)
