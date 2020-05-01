@@ -1,6 +1,8 @@
 const config = require('./config/config');
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors')
+
 const connectToDatabase = require('./database/database');
 const singlesRoutes = require('./api/matches/singles.routes');
 
@@ -10,6 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(cors());
 
 connectToDatabase();
 
