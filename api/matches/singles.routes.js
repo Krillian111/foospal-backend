@@ -15,8 +15,6 @@ const authenticateJWT = (req, res, next) => {
             next();
         });
     } else {
-        console.log(accessTokenSecret)
-        console.log(authHeader)
         res.sendStatus(401);
     }
   };
