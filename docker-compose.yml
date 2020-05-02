@@ -1,0 +1,19 @@
+version: '2'
+# simple development setup for running backend by itself
+# this is NOT for production purposes
+services:
+  myapp-test:
+    build: ./
+    ports:
+    - "4000:3000"
+    volumes:
+    - .:/usr/src/app
+    depends_on:
+    - database-test
+    environment:
+      ACCESSTOKENSECRET: testsecret
+      REFRESHTOKENSECRET: testsecret 
+      PORT: 3000
+      DB_URL: mongodb://database-test:27017/practice-stats
+  database-test:
+    image: mongo 
