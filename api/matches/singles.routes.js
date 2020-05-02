@@ -1,27 +1,9 @@
-var Singles = require('./singles.controller');
-const accessTokenSecret = process.env.ACCESSTOKENSECRET;
-
-const authenticateJWT = (req, res, next) => {
-    const authHeader = req.headers.authorization;
-
-    if (authHeader) {
-        const token = authHeader.split(' ')[1];
-
-        jwt.verify(token, accessTokenSecret, (err, user) => {
-            if (err) {
-                return res.sendStatus(403);
-            }
-            req.user = user;
-            next();
-        });
-    } else {
-        res.sendStatus(401);
-    }
-  };
+const validateUser = require('../../auth/validateUser');
+const controller = require('./singles.controller');
 
 module.exports = function(router) {
-    router.post('/singles', authenticateJWT, Singles.createSingle);
-    router.get('/singles', authenticateJWT, Singles.getSingles);
-    router.put('/singles/:id', authenticateJWT, Singles.updateSingle);
-    router.delete('/singles/:id', authenticateJWT, Singles.removeSingle);
+    router.post('/singles', validateUser, controller.createSingle);
+    router.get('/singles', controller.getSingles);
+    router.put('/singles/:id', validateUser, controller.updateSingle);
+    router.delete('/singles/:id', validateUser, controller.removeSingle);
 }

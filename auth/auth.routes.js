@@ -1,7 +1,7 @@
-var Auth = require('./auth.controller');
+const controller = require('./auth.controller');
 
 module.exports = function(router) {
-    router.post('/login', Auth.login);
-    router.post('/token', Auth.token);
-    router.post('/logout', Auth.logout);
+    router.post('/login', controller.login);
+    router.post('/token', controller.token);
+    router.post('/logout', controller.logout);
 }

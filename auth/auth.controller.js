@@ -1,25 +1,8 @@
-const users = [
-  {
-      username: 'john',
-      password: 'password123admin',
-      role: 'admin'
-  }, {
-      username: 'anna',
-      password: 'password123member',
-      role: 'member'
-  }
-];
-const accessTokenSecret = process.env.ACCESSTOKENSECRET;
-if ( ! accessTokenSecret ) {
-  throw new Error("No access token set. Please use the environment variable ACCESSTOKENSECRET");
-}
-const refreshTokenSecret = process.env.REFRESHTOKENSECRET;
-if ( ! accessTokenSecret ) {
-  throw new Error("No refresh token set. Please use the environment variable REFRESHTOKENSECRET");
-}
-var refreshTokens = [];
+const { users, accessTokenSecret, refreshTokenSecret } = require('./config');
 
-exports.login = function (req, res, next) {
+const refreshTokens = [];
+
+function login(req, res, next) {
   // Read username and password from request body
   const { username, password } = req.body;
 
@@ -42,7 +25,7 @@ exports.login = function (req, res, next) {
   }
 }
 
-exports.token = function (req, res, next) {
+function token(req, res, next) {
   const { token } = req.body;
 
   if (!token) {
@@ -66,7 +49,7 @@ exports.token = function (req, res, next) {
   });
 }
 
-exports.logout = function (req, res) {
+function logout (req, res) {
   const { token } = req.body;
   if (refreshTokens.filter(function(value, index, arr){return value === token;}).length === 0){
     res.send("Invalid refresh token!")
@@ -74,4 +57,10 @@ exports.logout = function (req, res) {
     refreshTokens = refreshTokens.filter(function(value, index, arr){return value !== token;});
     res.send("Logout successful");
   }
+}
+
+module.exports = {
+  token,
+  login,
+  logout,
 }

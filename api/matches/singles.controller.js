@@ -1,6 +1,6 @@
 const Singles = require('./singles.dao');
 
-exports.createSingle = function (req, res, next) {
+const createSingle = function (req, res, next) {
   const single = {
     playerA: req.body.playerA,
     playerB: req.body.playerB,
@@ -22,7 +22,7 @@ exports.createSingle = function (req, res, next) {
   })
 }
 
-exports.getSingles = function (req, res, next) {
+const getSingles = function (req, res, next) {
   Singles.get({}, (err, singles) => {
     if (err) {
       res.json({
@@ -35,7 +35,7 @@ exports.getSingles = function (req, res, next) {
   })
 }
 
-exports.updateSingle = function (req, res, next) {
+const updateSingle = function (req, res, next) {
   const single = {
     playerA: req.body.playerA,
     playerB: req.body.playerB,
@@ -58,7 +58,7 @@ exports.updateSingle = function (req, res, next) {
   })
 }
 
-exports.removeSingle = function (req, res, next) {
+const removeSingle = function (req, res, next) {
   Singles.delete({
     _id: req.params.id
   }, function (err, single) {
@@ -72,4 +72,11 @@ exports.removeSingle = function (req, res, next) {
       deleted: single,
     })
   })
+}
+
+module.exports = {
+  createSingle,
+  getSingles,
+  updateSingle,
+  removeSingle
 }

@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var singlesSchema = require('./singles.model');
+const mongoose = require('mongoose');
+const singlesSchema = require('./singles.model');
 
 singlesSchema.statics = {
     create : function(data, callback) {
