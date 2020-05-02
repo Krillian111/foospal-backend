@@ -12,12 +12,12 @@ var singlesSchema = new Schema({
     required: true,
   },
   scoreA: {
-    type: String,
+    type: Number,
     unique: false,
     required: true,
   },
   scoreB: {
-    type: String,
+    type: Number,
     unique: false,
     required: true,
   },
