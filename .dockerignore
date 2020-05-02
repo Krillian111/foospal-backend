@@ -1,7 +1,14 @@
+Dockerfile
+docker-compose.yml
+mongodb-data
+README.md
+build_containers.sh
+.git
+.gitignore
+
 # IDE stuff
 .history
 *.code-workspace
 
 node_modules
 npm-debug.log
-
