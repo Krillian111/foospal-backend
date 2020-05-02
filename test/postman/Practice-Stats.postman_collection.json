@@ -18,11 +18,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{apiRoot}}/singles",
+					"raw": "{{foospalhost}}/api/singles",
 					"host": [
-						"{{apiRoot}}"
+						"{{foospalhost}}"
 					],
 					"path": [
+						"api",
 						"singles"
 					]
 				}
@@ -52,18 +53,24 @@
 						"name": "Content-Type",
 						"type": "text",
 						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE1ODg0NTQ0ODIsImV4cCI6MTU4ODQ1NTY4Mn0.-eaeCyEZpMVYhEGZnDSX70Xfi7wkARW1l4KXmdk5OJE",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"playerA\": \"Anton\",\n    \"playerB\": \"Berta\",\n    \"scoreA\": \"5\",\n    \"scoreB\": \"3\",\n    \"playedOn\": \"2020-03-21T20:00:00.000Z\"\n}"
+					"raw": "{\n    \"playerA\": \"Anton\",\n    \"playerB\": \"Berta\",\n    \"scoreA\": \"5\",\n    \"scoreB\": 3,\n    \"playedOn\": \"2020-03-21T20:00:00.000Z\"\n}"
 				},
 				"url": {
-					"raw": "{{apiRoot}}/singles",
+					"raw": "{{foospalhost}}/api/singles",
 					"host": [
-						"{{apiRoot}}"
+						"{{foospalhost}}"
 					],
 					"path": [
+						"api",
 						"singles"
 					]
 				}
@@ -87,13 +94,13 @@
 					"raw": "{\n    \"playerA\": \"Anton\",\n    \"playerB\": \"Berta\",\n    \"scoreA\": \"5\",\n    \"scoreB\": \"3\",\n    \"playedOn\": \"2020-03-20T20:00:00.000Z\"\n}"
 				},
 				"url": {
-					"raw": "{{apiRoot}}/singles/5e7670c6e8aa8100825cb209",
+					"raw": "{{foospalhost}}/api/singles{{singleId}}",
 					"host": [
-						"{{apiRoot}}"
+						"{{foospalhost}}"
 					],
 					"path": [
-						"singles",
-						"5e7670c6e8aa8100825cb209"
+						"api",
+						"singles{{singleId}}"
 					]
 				}
 			},
@@ -112,13 +119,85 @@
 					}
 				],
 				"url": {
-					"raw": "{{apiRoot}}/singles/5e76707645e7820057e17030",
+					"raw": "{{foospalhost}}/api/singles{{singleId}}",
 					"host": [
-						"{{apiRoot}}"
+						"{{foospalhost}}"
 					],
 					"path": [
-						"singles",
-						"5e76707645e7820057e17030"
+						"api",
+						"singles{{singleId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"john\",\n    \"password\": \"password123admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{foospalhost}}/auth/login",
+					"host": [
+						"{{foospalhost}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE1ODg0MzQ4MjN9.xfr6fvStTcrAgXqguffjxY4XrItfGWxwNIquWyJ--vE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{foospalhost}}/auth/token",
+					"host": [
+						"{{foospalhost}}"
+					],
+					"path": [
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{foospalhost}}/auth/logout",
+					"host": [
+						"{{foospalhost}}"
+					],
+					"path": [
+						"auth",
+						"logout"
 					]
 				}
 			},
