@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const connectToDatabase = require('./database/database');
 const singlesRoutes = require('./api/matches/singles.routes');
 const loginRoutes = require('./auth/auth.routes');
-jwt = require('jsonwebtoken');
 
 const app = express();
 

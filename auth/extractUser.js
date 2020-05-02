@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const { accessTokenSecret } = require('./config');
 
 const extractUserFromJWTIfValid = (req, res, next) => {
