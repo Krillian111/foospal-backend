@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { users, accessTokenSecret, refreshTokenSecret } = require('./config');
 
-const refreshTokens = [];
+let refreshTokens = [];
 
 function login(req, res, next) {
   // Read username and password from request body
